@@ -19,9 +19,7 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto">
           <a class="nav-link active" href="{{ route('home.index') }}">Home</a>
-          <a class="nav-link active" href="{{ route('ninja.create') }}">Register Ninja</a>
-          <a class="nav-link active" href="{{ route('ninja.index') }}">List Ninjas</a>
-          <a class="nav-link active" href="{{ route('ninja.stats') }}">Ninja Statistics</a>
+          <a class="nav-link active" href="{{ route('ninja.register') }}">Register Ninja</a>
         </div>
       </div>
     </div>
