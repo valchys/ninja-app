@@ -9,7 +9,17 @@ use Illuminate\View\View;
 
 class NinjaController extends Controller
 {
-    public function create(): View
+    public function index(): View
+    {
+        $viewData = [];
+        $viewData['title'] = 'Ninja - Web App';
+        $viewData['subtitle'] = 'List of Ninjas';
+        $viewData['ninjas'] = Ninja::orderBy('chakra', 'desc')->get();
+
+        return view('ninja.list')->with('viewData', $viewData);
+    }
+    
+    public function register(): View
     {
         $viewData = [];
         $viewData['title'] = 'Register Ninja';
@@ -21,11 +31,11 @@ class NinjaController extends Controller
     {
         Ninja::validate($request);
 
-        $newComputer = new Ninja;
-        $newComputer->setName($request->input('name'));
-        $newComputer->setVillage($request->input('village'));
-        $newComputer->setChakra($request->input('chakra'));
-        $newComputer->save();
+        $newNinja = new Ninja;
+        $newNinja->setName($request->input('name'));
+        $newNinja->setVillage($request->input('village'));
+        $newNinja->setChakra($request->input('chakra'));
+        $newNinja->save();
 
         return redirect()->route('ninja.register')->with('success', 'Ninja registered successfully!');
 
