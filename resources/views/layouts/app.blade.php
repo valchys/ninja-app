@@ -21,6 +21,7 @@
           <a class="nav-link active" href="{{ route('home.index') }}">Home</a>
           <a class="nav-link active" href="{{ route('ninja.register') }}">Register Ninja</a>
           <a class="nav-link active" href="{{ route('ninja.list') }}">List Ninjas</a>
+          <a class="nav-link active" href="{{ route('ninja.stats') }}">Ninja Stats</a>
         </div>
       </div>
     </div>

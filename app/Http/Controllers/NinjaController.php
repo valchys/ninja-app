@@ -18,7 +18,7 @@ class NinjaController extends Controller
 
         return view('ninja.list')->with('viewData', $viewData);
     }
-    
+
     public function register(): View
     {
         $viewData = [];
@@ -39,5 +39,20 @@ class NinjaController extends Controller
 
         return redirect()->route('ninja.register')->with('success', 'Ninja registered successfully!');
 
+    }
+
+    public function stats(): View
+    {
+        $viewData = [];
+        $viewData['title'] = 'Ninja - Web App';
+        $viewData['subtitle'] = 'Ninja stats';
+        $viewData['ninjas'] = Ninja::all();
+
+        $ninjas = Ninja::all();
+
+        $viewData['ninjasByVillage'] = $ninjas->groupBy('village')->map->count();
+        $viewData['totalChakra'] = $ninjas->sum('chakra');
+
+        return view('ninja.stats')->with('viewData', $viewData);
     }
 }
